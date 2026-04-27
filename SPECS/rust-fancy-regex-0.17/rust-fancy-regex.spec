@@ -1,0 +1,117 @@
+%global crate_name fancy-regex
+%global full_version 0.17.0
+%global pkgname fancy-regex-0.17
+
+Name:           rust-fancy-regex-0.17
+Version:        0.17.0
+Release:        %autorelease
+Summary:        Rust crate "fancy-regex"
+License:        MIT
+URL:            https://github.com/fancy-regex/fancy-regex
+#!RemoteAsset:  sha256:e1e1dacd0d2082dfcf1351c4bdd566bbe89a2b263235a2b50058f1e130a47277
+Source:         https://crates.io/api/v1/crates/%{crate_name}/%{full_version}/download#/%{name}-%{version}.tar.gz
+BuildArch:      noarch
+BuildSystem:    rustcrates
+
+BuildRequires:  rust-rpm-macros
+
+Requires:       crate(bit-set-0.8) >= 0.8.0
+Requires:       crate(regex-automata-0.4/alloc) >= 0.4.14
+Requires:       crate(regex-automata-0.4/dfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/hybrid) >= 0.4.14
+Requires:       crate(regex-automata-0.4/meta) >= 0.4.14
+Requires:       crate(regex-automata-0.4/nfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/syntax) >= 0.4.14
+Requires:       crate(regex-syntax-0.8) >= 0.8.0
+Provides:       crate(%{pkgname})
+Provides:       crate(%{pkgname}/track-caller)
+
+%description
+Aims to be compatible with Oniguruma syntax when the relevant flag is set.
+Source code for takopackized Rust crate "fancy-regex"
+
+%package     -n %{name}+default
+Summary:        Regexes, supporting a relatively rich set of features, including backreferences and look-around - feature "default"
+Requires:       crate(%{pkgname})
+Requires:       crate(%{pkgname}/perf)
+Requires:       crate(%{pkgname}/std)
+Requires:       crate(%{pkgname}/unicode)
+Requires:       crate(%{pkgname}/variable-lookbehinds)
+Provides:       crate(%{pkgname}/default)
+
+%description -n %{name}+default
+Aims to be compatible with Oniguruma syntax when the relevant flag is set.
+This metapackage enables feature "default" for the Rust fancy-regex crate, by pulling in any additional dependencies needed by that feature.
+
+%package     -n %{name}+perf
+Summary:        Regexes, supporting a relatively rich set of features, including backreferences and look-around - feature "perf"
+Requires:       crate(%{pkgname})
+Requires:       crate(regex-automata-0.4/alloc) >= 0.4.14
+Requires:       crate(regex-automata-0.4/dfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/hybrid) >= 0.4.14
+Requires:       crate(regex-automata-0.4/meta) >= 0.4.14
+Requires:       crate(regex-automata-0.4/nfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/perf) >= 0.4.14
+Requires:       crate(regex-automata-0.4/syntax) >= 0.4.14
+Provides:       crate(%{pkgname}/perf)
+
+%description -n %{name}+perf
+Aims to be compatible with Oniguruma syntax when the relevant flag is set.
+This metapackage enables feature "perf" for the Rust fancy-regex crate, by pulling in any additional dependencies needed by that feature.
+
+%package     -n %{name}+std
+Summary:        Regexes, supporting a relatively rich set of features, including backreferences and look-around - feature "std"
+Requires:       crate(%{pkgname})
+Requires:       crate(bit-set-0.8/std) >= 0.8.0
+Requires:       crate(regex-automata-0.4/alloc) >= 0.4.14
+Requires:       crate(regex-automata-0.4/dfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/hybrid) >= 0.4.14
+Requires:       crate(regex-automata-0.4/meta) >= 0.4.14
+Requires:       crate(regex-automata-0.4/nfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/std) >= 0.4.14
+Requires:       crate(regex-automata-0.4/syntax) >= 0.4.14
+Requires:       crate(regex-syntax-0.8/std) >= 0.8.0
+Provides:       crate(%{pkgname}/std)
+
+%description -n %{name}+std
+Aims to be compatible with Oniguruma syntax when the relevant flag is set.
+This metapackage enables feature "std" for the Rust fancy-regex crate, by pulling in any additional dependencies needed by that feature.
+
+%package     -n %{name}+unicode
+Summary:        Regexes, supporting a relatively rich set of features, including backreferences and look-around - feature "unicode"
+Requires:       crate(%{pkgname})
+Requires:       crate(regex-automata-0.4/alloc) >= 0.4.14
+Requires:       crate(regex-automata-0.4/dfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/hybrid) >= 0.4.14
+Requires:       crate(regex-automata-0.4/meta) >= 0.4.14
+Requires:       crate(regex-automata-0.4/nfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/syntax) >= 0.4.14
+Requires:       crate(regex-automata-0.4/unicode) >= 0.4.14
+Requires:       crate(regex-syntax-0.8/unicode) >= 0.8.0
+Provides:       crate(%{pkgname}/unicode)
+
+%description -n %{name}+unicode
+Aims to be compatible with Oniguruma syntax when the relevant flag is set.
+This metapackage enables feature "unicode" for the Rust fancy-regex crate, by pulling in any additional dependencies needed by that feature.
+
+%package     -n %{name}+variable-lookbehinds
+Summary:        Regexes, supporting a relatively rich set of features, including backreferences and look-around - feature "variable-lookbehinds"
+Requires:       crate(%{pkgname})
+Requires:       crate(regex-automata-0.4/alloc) >= 0.4.14
+Requires:       crate(regex-automata-0.4/dfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/dfa-search) >= 0.4.14
+Requires:       crate(regex-automata-0.4/hybrid) >= 0.4.14
+Requires:       crate(regex-automata-0.4/meta) >= 0.4.14
+Requires:       crate(regex-automata-0.4/nfa) >= 0.4.14
+Requires:       crate(regex-automata-0.4/syntax) >= 0.4.14
+Provides:       crate(%{pkgname}/variable-lookbehinds)
+
+%description -n %{name}+variable-lookbehinds
+Aims to be compatible with Oniguruma syntax when the relevant flag is set.
+This metapackage enables feature "variable-lookbehinds" for the Rust fancy-regex crate, by pulling in any additional dependencies needed by that feature.
+
+%files
+%{_datadir}/cargo/registry/%{crate_name}-%{version}/
+
+%changelog
+%{?autochangelog}
